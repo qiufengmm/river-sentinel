@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "river-sentinel-ml"
+version = "0.1.0"
+description = "飞云江水位预测与防汛辅助决策智能体的数据和算法基础包"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.27,<1",
+  "numpy>=2,<3",
+  "pandas>=2.2,<3",
+  "pyarrow>=17,<20",
+  "pydantic>=2.9,<3",
+  "pydantic-settings>=2.5,<3",
+  "scikit-learn>=1.5,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+  "pytest-cov>=5,<7",
+  "ruff>=0.6,<1",
+]
+
+[project.scripts]
+river-sentinel-data = "river_sentinel_ml.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "ml/src"}
+
+[tool.setuptools.packages.find]
+where = ["ml/src"]
+
+[tool.pytest.ini_options]
+testpaths = ["ml/tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

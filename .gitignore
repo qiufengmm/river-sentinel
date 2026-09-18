@@ -1,2 +1,16 @@
 # Local Git worktrees
 .worktrees/
+.env
+.venv/
+data/raw/
+data/interim/
+data/processed/
+ml/artifacts/
+build/
+*.db
+*.egg-info/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
