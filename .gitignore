@@ -6,3 +6,23 @@
 .codex/reports/
 .codex/state/
 .codex/handoffs/
+
+# Local environment, bulk data and build outputs
+.env
+.venv/
+data/raw/
+data/interim/
+data/processed/
+ml/artifacts/
+build/
+dist/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.egg-info/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
