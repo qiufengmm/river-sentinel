@@ -1,2 +1,8 @@
 # Local Git worktrees
 .worktrees/
+
+# Local agent workflow state and reports
+.codebuddy/
+.codex/reports/
+.codex/state/
+.codex/handoffs/
