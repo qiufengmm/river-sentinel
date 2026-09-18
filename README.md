@@ -26,6 +26,8 @@ python -m venv .venv
 
 需要调用温州市公共数据开放平台API时，将获批密钥配置到本地 `.env` 的 `WENZHOU_DATA_APPSECRET`。不得将 `.env` 或密钥提交到Git。
 
+`river-sentinel-data`命令将在数据流水线Task 8完成后启用。
+
 ## 设计资料
 
 - 设计规格：`docs/superpowers/specs/2026-09-16-river-sentinel-project-design.md`

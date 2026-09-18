@@ -14,3 +14,8 @@ __pycache__/
 .ruff_cache/
 .coverage
 htmlcov/
+.codex/reports/
+dist/
+*.sqlite
+*.sqlite3
+*.db-journal
