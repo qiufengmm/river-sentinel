@@ -48,6 +48,20 @@ def _rows() -> list[dict[str, object]]:
     ]
 
 
+def _reject_non_json_constant(name: str) -> object:
+    """Strict-parser hook: NaN / Infinity / -Infinity must never reach a snapshot."""
+    raise ValueError(f"non-JSON constant {name!r} in snapshot")
+
+
+def _strict_parse_lines(text: str) -> list[object]:
+    """Parse each NDJSON line with a strict parser that rejects non-JSON constants."""
+    return [
+        json.loads(line, parse_constant=_reject_non_json_constant)
+        for line in text.splitlines()
+        if line.strip()
+    ]
+
+
 def test_namespace_constants() -> None:
     assert SOURCE_NAMESPACE == "wenzhou"
     assert SENSITIVE_PARAMETER_KEYS == frozenset(
@@ -230,6 +244,88 @@ def test_invalid_parameter_value_raises_value_error(
 
     with pytest.raises(ValueError):
         write_raw_snapshot(_rows(), metadata, tmp_path)
+
+    assert not any(tmp_path.rglob("*.ndjson"))
+
+
+def test_nan_values_are_serialized_as_null(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    _fixed_now(monkeypatch)
+    rows = [{"station_code": "330328001", "water_level_m": float("nan")}]
+
+    snapshot_path, _, manifest = write_raw_snapshot(rows, _metadata(), tmp_path)
+
+    text = snapshot_path.read_text(encoding="utf-8")
+    assert "NaN" not in text
+    assert text == '{"station_code": "330328001", "water_level_m": null}\n'
+    assert _strict_parse_lines(text) == [{"station_code": "330328001", "water_level_m": None}]
+    assert manifest.record_count == 1
+
+
+def test_infinite_values_are_serialized_as_null(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    _fixed_now(monkeypatch)
+    rows = [{"max_level": float("inf"), "min_level": float("-inf")}]
+
+    snapshot_path, _, _ = write_raw_snapshot(rows, _metadata(), tmp_path)
+
+    text = snapshot_path.read_text(encoding="utf-8")
+    assert "Infinity" not in text
+    assert "-Infinity" not in text
+    assert text == '{"max_level": null, "min_level": null}\n'
+    assert _strict_parse_lines(text) == [{"max_level": None, "min_level": None}]
+
+
+def test_non_finite_values_in_nested_containers_are_nulled(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    _fixed_now(monkeypatch)
+    rows = [
+        {
+            "nested": {"x": float("nan")},
+            "items": [1.5, float("inf")],
+            "pair": (float("-inf"), "keep"),
+        }
+    ]
+
+    snapshot_path, _, _ = write_raw_snapshot(rows, _metadata(), tmp_path)
+
+    text = snapshot_path.read_text(encoding="utf-8")
+    parsed = _strict_parse_lines(text)
+    # 结构不变：键名、数组长度与顺序均与输入一致（顶层键名经 sort_keys 排序）
+    assert parsed == [{"items": [1.5, None], "nested": {"x": None}, "pair": [None, "keep"]}]
+    assert list(parsed[0]) == ["items", "nested", "pair"]
+    assert parsed[0]["nested"]["x"] is None
+    assert len(parsed[0]["items"]) == 2
+    assert parsed[0]["items"][0] == 1.5
+    assert parsed[0]["pair"][1] == "keep"
+    assert "NaN" not in text
+    assert "Infinity" not in text
+
+
+def test_finite_rows_are_serialized_byte_identically(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    _fixed_now(monkeypatch)
+    rows = _rows()
+
+    snapshot_path, _, _ = write_raw_snapshot(rows, _metadata(), tmp_path)
+
+    expected = "".join(
+        f"{json.dumps(dict(row), ensure_ascii=False, sort_keys=True)}\n" for row in rows
+    )
+    assert snapshot_path.read_bytes() == expected.encode("utf-8")
+
+
+def test_non_finite_value_surviving_normalization_raises(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """归一化被绕过时，allow_nan=False 必须抛错而不是写入非法 JSON。"""
+    _fixed_now(monkeypatch)
+    monkeypatch.setattr(provenance, "_replace_non_finite", lambda value: value)
+
+    with pytest.raises(ValueError):
+        write_raw_snapshot([{"water_level_m": float("nan")}], _metadata(), tmp_path)
 
     assert not any(tmp_path.rglob("*.ndjson"))
 
