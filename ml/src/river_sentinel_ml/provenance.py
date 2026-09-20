@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import math
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
@@ -30,13 +31,36 @@ class SnapshotMetadata:
     request_parameters: Mapping[str, object] = field(default_factory=dict)
 
 
+def _replace_non_finite(value: object) -> object:
+    """Recursively turn non-finite floats (NaN, ±Infinity) into None in value positions.
+
+    只重写取值位置：映射的键保持原样，list 仍是 list、tuple 仍是 tuple，
+    其余类型（int、str、bool、None）原样返回。
+    """
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    if isinstance(value, Mapping):
+        return {key: _replace_non_finite(item) for key, item in value.items()}
+    if isinstance(value, tuple):
+        return tuple(_replace_non_finite(item) for item in value)
+    if isinstance(value, list):
+        return [_replace_non_finite(item) for item in value]
+    return value
+
+
 def _serialize_rows(rows: Iterable[Mapping[str, object]]) -> tuple[bytes, int]:
-    """Render rows as deterministic NDJSON bytes and return them with the row count."""
+    """Render rows as deterministic NDJSON bytes and return them with the row count.
+
+    非有限浮点值（``NaN``、``+Infinity``、``-Infinity``）序列化为 ``null``，
+    使输出始终是 RFC 8259 合法 JSON；``allow_nan=False`` 作为兜底保险，
+    若有非有限值漏网则抛 ``ValueError`` 而不是写入非法 JSON。
+    """
     lines: list[str] = []
     for index, row in enumerate(rows):
         if not isinstance(row, Mapping):
             raise TypeError(f"row {index} must be a mapping, got {type(row).__name__}")
-        lines.append(json.dumps(dict(row), ensure_ascii=False, sort_keys=True))
+        safe_row = _replace_non_finite(dict(row))
+        lines.append(json.dumps(safe_row, ensure_ascii=False, sort_keys=True, allow_nan=False))
     return "".join(f"{line}\n" for line in lines).encode("utf-8"), len(lines)
 
 
