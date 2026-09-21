@@ -1,0 +1,6 @@
+point_id,longitude,latitude,note,source,basis
+WC-G1,120.03,27.79,县域中部,OpenStreetMap Nominatim（https://nominatim.openstreetmap.org，逆向地理编码，访问日期 2026-09-21）,逆向地理编码（zoom=10）返回"文成县, 温州市, 浙江省, 325300, 中国"（OSM relation 3289421）
+WC-G2,119.85,27.92,县域西北部,OpenStreetMap Nominatim（https://nominatim.openstreetmap.org，逆向地理编码，访问日期 2026-09-21）,逆向地理编码（zoom=10）返回"文成县, 温州市, 浙江省, 325300, 中国"（OSM relation 3289421）
+WC-G3,120.15,27.90,县域东北部,OpenStreetMap Nominatim（https://nominatim.openstreetmap.org，逆向地理编码，访问日期 2026-09-21）,逆向地理编码（zoom=10）返回"文成县, 温州市, 浙江省, 325300, 中国"（OSM relation 3289421）
+WC-G4,120.00,27.67,县域南部偏西,OpenStreetMap Nominatim（https://nominatim.openstreetmap.org，逆向地理编码，访问日期 2026-09-21）,逆向地理编码（zoom=10）返回"文成县, 温州市, 浙江省, 325300, 中国"（OSM relation 3289421）
+WC-G5,120.18,27.72,县域东南部,OpenStreetMap Nominatim（https://nominatim.openstreetmap.org，逆向地理编码，访问日期 2026-09-21）,逆向地理编码（zoom=10）返回"文成县, 温州市, 浙江省, 325300, 中国"（OSM relation 3289421）

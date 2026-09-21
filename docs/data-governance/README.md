@@ -13,11 +13,13 @@
 
 | 文件 | 数据集 | 主题 | 状态 | 可用于论文实验 |
 | --- | --- | --- | --- | --- |
-| `source-cata-12720.md` | `cata_12720` 文成县飞云江二期治理工程水位信息 | `water_level` | 目标序列，已登记，`API_AUTH_PENDING` | 仅限教学科研与辅助分析 |
+| `source-cata-12720.md` | `cata_12720` 文成县飞云江二期治理工程水位信息 | `water_level` | 目标序列，已登记，`API_AUTH_PENDING`；文件下载通道实测可用（2026-09-21，见该文件第 9 节） | 仅限教学科研与辅助分析 |
 | `source-cata-12756.md` | `cata_12756` 文成县飞云江二期治理工程流量信息 | `flow` | 候选（优先级 1），`API_AUTH_PENDING` | 待确认 |
 | `source-cata-16965.md` | `cata_16965` 浙江省级区县面雨量小时实况信息 | `rainfall` | 候选（优先级 2），`API_AUTH_PENDING` | 待确认 |
 | `source-cata-13199.md` | `cata_13199` 小时雨量信息 | `rainfall` | 候选（优先级 3），`API_AUTH_PENDING` | 待确认 |
 | `source-8205.md` | `iid=8205` 测站信息工程信息 | `other` | 候选（优先级 4）；页面数据量 0，接口目录待确认 | 待确认 |
+| `source-open-meteo-era5land.md` | Open-Meteo Historical Weather API（ERA5 / ERA5-Land 再分析，无密钥） | `rainfall` | 已登记，实测可用（2026-09-21，快照 SHA-256 见登记文档第 5 节） | 允许作为「文成县区域降雨代理变量」，禁止表述为站点实测 |
+| `data/metadata/wencheng_grid_points.csv` | 文成县固定降雨网格点（5 点，OSM Nominatim 核实，冻结） | `rainfall`（元数据） | 已登记（2026-09-21） | 与 `source-open-meteo-era5land.md` 配套使用 |
 | `source-template.md` | 模板（勿登记为数据源） | — | — | — |
 
 新增候选数据集时：复制 `source-template.md` 为 `source-<标识>.md`，填写后在本表追加一行。无法确认的字段写「待确认」，禁止推测；接口目录未经平台确认时不得假定 `cata_` 前缀（故 `iid=8205` 登记为 `source-8205.md`）。
