@@ -24,6 +24,7 @@ dev = [
   "pytest-cov>=5,<7",
   "ruff>=0.6,<1",
 ]
+modeling = ["xgboost>=2,<4", "torch>=2.4,<3"]
 
 [project.scripts]
 river-sentinel-data = "river_sentinel_ml.cli:main"
