@@ -1,0 +1,97 @@
+{
+  "request_id": "7f429327-7b17-4ca7-8ce2-0b0facc3da9e",
+  "status": "ok",
+  "data": {
+    "station_id": "cata_12720",
+    "level": "normal",
+    "is_stale": false,
+    "threshold": 7.18,
+    "threshold_unit": "m",
+    "threshold_source": "train p90 research_high_water",
+    "metric_name": "research_high_water",
+    "triggered_horizons": [],
+    "missing_horizons": [],
+    "predicted_values": {
+      "h1": 3.71,
+      "h3": 3.52,
+      "h6": 3.2
+    },
+    "anchor_at": "2026-01-01T11:00:00+08:00",
+    "last_observed_at": "2026-01-01T11:00:00+08:00",
+    "evaluated_at": "2026-01-01T11:00:00+08:00",
+    "data_age_hours": 0.0,
+    "model": "persistence",
+    "model_version": "ds5b-hourly-baseline-1",
+    "basis_source": "deterministic_rule",
+    "basis": {
+      "threshold": 7.18,
+      "threshold_unit": "m",
+      "threshold_source": "train p90 research_high_water",
+      "metric": "research_high_water",
+      "model_name": "persistence",
+      "model_version": "ds5b-hourly-baseline-1",
+      "anchor_at": "2026-01-01T11:00:00+08:00",
+      "data_last_observed_at": "2026-01-01T11:00:00+08:00",
+      "data_age_hours": 0.0,
+      "is_stale": false,
+      "stale_after_hours": 3.0,
+      "evaluated_at": "2026-01-01T11:00:00+08:00",
+      "considered_horizons": [
+        1,
+        3,
+        6
+      ],
+      "triggered_horizons": [],
+      "missing_horizons": [],
+      "predicted_values": {
+        "h1": 3.71,
+        "h3": 3.52,
+        "h6": 3.2
+      },
+      "disclaimer": "非官方标准，仅用于教学科研辅助，教学科研辅助，不替代官方防汛决策。"
+    },
+    "guidance": "研究性判定等级：normal（research_high_water）\n研究性高水位未见触发（预测量测三个时域均低于研究性阈值）\n研究性阈值：7.180000 m（来源：train p90 research_high_water）\n触发时域：无；缺失预测不参评：无\n模型：persistence / ds5b-hourly-baseline-1；预测锚点：2026-01-01T11:00:00+08:00\n数据最后观测：2026-01-01T11:00:00+08:00；数据新鲜度：0 小时（陈旧门槛 3 小时）\n判定时间：2026-01-01T11:00:00+08:00\n非官方标准，仅用于教学科研辅助，教学科研辅助，不替代官方防汛决策。",
+    "limitations": [
+      "研究性高水位阈值只由 train 段 p90 拟合，非官方标准，仅用于教学科研辅助，不替代官方防汛决策。",
+      "判定只依据给定预测值与阈值比较，不含降雨、流量、调度与河道地形等真实水文条件。",
+      "数据陈旧只做标注：等级不因陈旧而自动上调或下调。",
+      "test 段在 train p90 阈值下零观测事件，事件级检出能力尚未得到验证。"
+    ],
+    "status": "ok",
+    "warnings": [],
+    "evidence": [
+      {
+        "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+        "data_mode": "history_replay",
+        "observed_at": "2026-01-01T11:00:00+08:00",
+        "freshness": "fresh",
+        "model_version": "ds5b-hourly-baseline-1",
+        "tool_trace": [
+          "evaluate_research_risk:threshold=7.18:horizons=1,3,6"
+        ],
+        "notes": [
+          "研究性阈值：7.18 m（train p90 research_high_water）",
+          "等级来源：river_sentinel_ml.risk.evaluate_research_risk"
+        ]
+      }
+    ],
+    "disclaimer": "本结果为历史回放 / 本地快照数据上的教学科研辅助分析，不替代官方防汛决策。"
+  },
+  "evidence": [
+    {
+      "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+      "data_mode": "history_replay",
+      "observed_at": "2026-01-01T11:00:00+08:00",
+      "freshness": "fresh",
+      "model_version": "ds5b-hourly-baseline-1",
+      "tool_trace": [
+        "evaluate_research_risk:threshold=7.18:horizons=1,3,6"
+      ],
+      "notes": [
+        "研究性阈值：7.18 m（train p90 research_high_water）",
+        "等级来源：river_sentinel_ml.risk.evaluate_research_risk"
+      ]
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,131 @@
+{
+  "request_id": "9b1a6b62-0d49-4e1f-be7d-7b0eb509ca8f",
+  "status": "ok",
+  "data": {
+    "station_id": "cata_12720",
+    "data_mode": "history_replay",
+    "points": [
+      {
+        "station_id": "cata_12720",
+        "observed_at": "2026-01-01T00:00:00+08:00",
+        "water_level_m": 3.1,
+        "quality_flag": "normal",
+        "is_imputed": false
+      },
+      {
+        "station_id": "cata_12720",
+        "observed_at": "2026-01-01T01:00:00+08:00",
+        "water_level_m": 3.12,
+        "quality_flag": "normal",
+        "is_imputed": false
+      },
+      {
+        "station_id": "cata_12720",
+        "observed_at": "2026-01-01T02:00:00+08:00",
+        "water_level_m": 3.15,
+        "quality_flag": "normal",
+        "is_imputed": false
+      },
+      {
+        "station_id": "cata_12720",
+        "observed_at": "2026-01-01T03:00:00+08:00",
+        "water_level_m": 3.2,
+        "quality_flag": "normal",
+        "is_imputed": false
+      },
+      {
+        "station_id": "cata_12720",
+        "observed_at": "2026-01-01T04:00:00+08:00",
+        "water_level_m": 3.28,
+        "quality_flag": "normal",
+        "is_imputed": false
+      },
+      {
+        "station_id": "cata_12720",
+        "observed_at": "2026-01-01T05:00:00+08:00",
+        "water_level_m": 3.35,
+        "quality_flag": "normal",
+        "is_imputed": false
+      },
+      {
+        "station_id": "cata_12720",
+        "observed_at": "2026-01-01T07:00:00+08:00",
+        "water_level_m": 3.52,
+        "quality_flag": "normal",
+        "is_imputed": false
+      },
+      {
+        "station_id": "cata_12720",
+        "observed_at": "2026-01-01T09:00:00+08:00",
+        "water_level_m": 3.66,
+        "quality_flag": "normal",
+        "is_imputed": false
+      },
+      {
+        "station_id": "cata_12720",
+        "observed_at": "2026-01-01T10:00:00+08:00",
+        "water_level_m": 3.71,
+        "quality_flag": "normal",
+        "is_imputed": false
+      },
+      {
+        "station_id": "cata_12720",
+        "observed_at": "2026-01-01T11:00:00+08:00",
+        "water_level_m": 3.74,
+        "quality_flag": "normal",
+        "is_imputed": false
+      }
+    ],
+    "quality_notes": [
+      "样例总行数：12；可用观测：10",
+      "剔除非法时间戳行：1",
+      "剔除缺失或非有限水位行：1",
+      "剔除重复时间戳行：0",
+      "样例为合成演示数据，非真实观测，不得作为实测或防汛依据。"
+    ],
+    "status": "ok",
+    "freshness": "fresh",
+    "latest_observed_at": "2026-01-01T11:00:00+08:00",
+    "warnings": [],
+    "evidence": [
+      {
+        "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+        "data_mode": "history_replay",
+        "observed_at": "2026-01-01T11:00:00+08:00",
+        "freshness": "fresh",
+        "model_version": null,
+        "tool_trace": [
+          "query_water_level_history:station=cata_12720:points=10"
+        ],
+        "notes": [
+          "样例总行数：12；可用观测：10",
+          "剔除非法时间戳行：1",
+          "剔除缺失或非有限水位行：1",
+          "剔除重复时间戳行：0",
+          "样例为合成演示数据，非真实观测，不得作为实测或防汛依据。"
+        ]
+      }
+    ],
+    "disclaimer": "本结果为历史回放 / 本地快照数据上的教学科研辅助分析，不替代官方防汛决策。"
+  },
+  "evidence": [
+    {
+      "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+      "data_mode": "history_replay",
+      "observed_at": "2026-01-01T11:00:00+08:00",
+      "freshness": "fresh",
+      "model_version": null,
+      "tool_trace": [
+        "query_water_level_history:station=cata_12720:points=10"
+      ],
+      "notes": [
+        "样例总行数：12；可用观测：10",
+        "剔除非法时间戳行：1",
+        "剔除缺失或非有限水位行：1",
+        "剔除重复时间戳行：0",
+        "样例为合成演示数据，非真实观测，不得作为实测或防汛依据。"
+      ]
+    }
+  ],
+  "warnings": []
+}

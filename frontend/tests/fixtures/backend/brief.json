@@ -1,0 +1,168 @@
+{
+  "request_id": "4b0e487c-a852-422e-a4fb-2314e9ff1f14",
+  "status": "degraded",
+  "data": {
+    "title": "cata_12720 水情简报（历史回放）",
+    "station_id": "cata_12720",
+    "data_mode": "history_replay",
+    "generated_at": "2026-01-01T11:00:00+08:00",
+    "data_time": "2026-01-01T11:00:00+08:00",
+    "model_version": "ds5b-hourly-baseline-1",
+    "risk_level": "normal",
+    "highlights": [
+      "最新观测 3.74 m（2026-01-01T11:00:00+08:00，历史回放）",
+      "预测模型 persistence/ds5b-hourly-baseline-1（状态 ok）",
+      "研究性判定等级：normal"
+    ],
+    "sections": [
+      {
+        "heading": "数据与水情",
+        "lines": [
+          "数据模式：历史回放（history_replay）",
+          "目标断面：cata_12720",
+          "数据来源：https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+          "最新观测：3.740 m（2026-01-01T11:00:00+08:00）",
+          "本结果为历史回放 / 本地快照数据上的教学科研辅助分析，不替代官方防汛决策。"
+        ]
+      },
+      {
+        "heading": "预测（未来 1/3/6 步）",
+        "lines": [
+          "模型：persistence / ds5b-hourly-baseline-1（请求模型 persistence）",
+          "锚点：2026-01-01T11:00:00+08:00；状态：ok",
+          "未来 h1（2026-01-01T12:00:00+08:00）：3.710 m[persistence]",
+          "未来 h3（2026-01-01T14:00:00+08:00）：3.520 m[persistence]",
+          "未来 h6（2026-01-01T17:00:00+08:00）：3.200 m[persistence]"
+        ]
+      },
+      {
+        "heading": "研究性风险判定",
+        "lines": [
+          "研究性判定等级：normal（research_high_water）",
+          "研究性阈值：7.18 m（train p90 research_high_water）",
+          "触发时域：无；缺失不参评：无",
+          "等级来源：deterministic_rule（确定性规则，Provider 不得修改）",
+          "数据：最后观测 2026-01-01T11:00:00+08:00，数据龄 0.00 小时，陈旧标记 False",
+          "限制：研究性高水位阈值只由 train 段 p90 拟合，非官方标准，仅用于教学科研辅助，不替代官方防汛决策。",
+          "限制：判定只依据给定预测值与阈值比较，不含降雨、流量、调度与河道地形等真实水文条件。"
+        ]
+      },
+      {
+        "heading": "模型对比与限制",
+        "lines": [
+          "指标来源：docs/experiments/hourly-error-and-events.md（§2 逐段逐时域指标（test 段）与 §3 事件级指标（test 段））；状态：degraded",
+          "研究性阈值：7.18 m",
+          "主对照：xgboost_e1, persistence；test 段主对照为 XGBoost 与持久性基线；Ridge / LSTM 受缺失填充与有效样本限制，不得作为主要泛化结论。",
+          "test h1 持久性基线：样本 144，MAE 0.040556，RMSE 0.094817，R² 0.932208",
+          "test h1 XGBoost E1：样本 144，MAE 0.083304，RMSE 0.157271，R² 0.813490",
+          "test h3 持久性基线：样本 118，MAE 0.107542，RMSE 0.233371，R² 0.628046",
+          "test h3 XGBoost E1：样本 118，MAE 0.207706，RMSE 0.303808，R² 0.369629",
+          "test h6 持久性基线：样本 84，MAE 0.210952，RMSE 0.392492，R² 0.200674",
+          "test h6 XGBoost E1：样本 84，MAE 0.277804，RMSE 0.389333，R² 0.213487",
+          "test h1 事件级 F1/precision：null（reason=no_observed_events）",
+          "test h3 事件级 F1/precision：null（reason=no_observed_events）",
+          "test h6 事件级 F1/precision：null（reason=no_observed_events）",
+          "本简报只消费已发布指标，不重算；阈值 7.18 m 非官方标准。"
+        ]
+      }
+    ],
+    "tool_trace": [
+      "query_water_level_history",
+      "forecast_water_level"
+    ],
+    "status": "degraded",
+    "warnings": [
+      "COMPARISON_ARTIFACT_UNAVAILABLE: 未配置产物目录或缺少 model_comparison.json，返回 DS-7 报告已发布数值快照（只读，未重算）"
+    ],
+    "evidence": [
+      {
+        "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+        "data_mode": "history_replay",
+        "observed_at": "2026-01-01T11:00:00+08:00",
+        "freshness": "fresh",
+        "model_version": "ds5b-hourly-baseline-1",
+        "tool_trace": [
+          "forecast_water_level:requested=persistence:effective=persistence:horizons=1,3,6"
+        ],
+        "notes": [
+          "预测锚点：2026-01-01T11:00:00+08:00",
+          "步长口径：60 分钟/步，1/3/6 步按步长外推"
+        ]
+      },
+      {
+        "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+        "data_mode": "history_replay",
+        "observed_at": "2026-01-01T11:00:00+08:00",
+        "freshness": "fresh",
+        "model_version": "ds5b-hourly-baseline-1",
+        "tool_trace": [
+          "evaluate_research_risk:model=persistence:horizons=1,3,6"
+        ],
+        "notes": [
+          "研究性阈值：7.18 m（train p90 research_high_water）",
+          "等级来源：river_sentinel_ml.risk.evaluate_research_risk"
+        ]
+      },
+      {
+        "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+        "data_mode": "history_replay",
+        "observed_at": null,
+        "freshness": "unknown",
+        "model_version": "ds7-hourly-error-and-events",
+        "tool_trace": [
+          "compare_forecast_models:horizons=1,3,6"
+        ],
+        "notes": [
+          "指标来源：docs/experiments/hourly-error-and-events.md（§2 逐段逐时域指标（test 段）与 §3 事件级指标（test 段））"
+        ]
+      }
+    ],
+    "disclaimer": "本结果为历史回放 / 本地快照数据上的教学科研辅助分析，不替代官方防汛决策。"
+  },
+  "evidence": [
+    {
+      "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+      "data_mode": "history_replay",
+      "observed_at": "2026-01-01T11:00:00+08:00",
+      "freshness": "fresh",
+      "model_version": "ds5b-hourly-baseline-1",
+      "tool_trace": [
+        "forecast_water_level:requested=persistence:effective=persistence:horizons=1,3,6"
+      ],
+      "notes": [
+        "预测锚点：2026-01-01T11:00:00+08:00",
+        "步长口径：60 分钟/步，1/3/6 步按步长外推"
+      ]
+    },
+    {
+      "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+      "data_mode": "history_replay",
+      "observed_at": "2026-01-01T11:00:00+08:00",
+      "freshness": "fresh",
+      "model_version": "ds5b-hourly-baseline-1",
+      "tool_trace": [
+        "evaluate_research_risk:model=persistence:horizons=1,3,6"
+      ],
+      "notes": [
+        "研究性阈值：7.18 m（train p90 research_high_water）",
+        "等级来源：river_sentinel_ml.risk.evaluate_research_risk"
+      ]
+    },
+    {
+      "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+      "data_mode": "history_replay",
+      "observed_at": null,
+      "freshness": "unknown",
+      "model_version": "ds7-hourly-error-and-events",
+      "tool_trace": [
+        "compare_forecast_models:horizons=1,3,6"
+      ],
+      "notes": [
+        "指标来源：docs/experiments/hourly-error-and-events.md（§2 逐段逐时域指标（test 段）与 §3 事件级指标（test 段））"
+      ]
+    }
+  ],
+  "warnings": [
+    "COMPARISON_ARTIFACT_UNAVAILABLE: 未配置产物目录或缺少 model_comparison.json，返回 DS-7 报告已发布数值快照（只读，未重算）"
+  ]
+}

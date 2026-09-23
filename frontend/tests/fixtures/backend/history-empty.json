@@ -1,0 +1,64 @@
+{
+  "request_id": "30f45498-7cc8-408f-8083-d9ad2d1a2d3f",
+  "status": "unavailable",
+  "data": {
+    "station_id": "cata_12720",
+    "data_mode": "history_replay",
+    "points": [],
+    "quality_notes": [
+      "样例总行数：12；可用观测：10",
+      "剔除非法时间戳行：1",
+      "剔除缺失或非有限水位行：1",
+      "剔除重复时间戳行：0",
+      "样例为合成演示数据，非真实观测，不得作为实测或防汛依据。"
+    ],
+    "status": "unavailable",
+    "freshness": "fresh",
+    "latest_observed_at": null,
+    "warnings": [
+      "DATA_UNAVAILABLE: 该时间范围内没有可用观测（断面 cata_12720，start=2000-01-01 00:00:00+08:00，end=2000-01-02 00:00:00+08:00）"
+    ],
+    "evidence": [
+      {
+        "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+        "data_mode": "history_replay",
+        "observed_at": null,
+        "freshness": "fresh",
+        "model_version": null,
+        "tool_trace": [
+          "query_water_level_history:station=cata_12720:points=0"
+        ],
+        "notes": [
+          "样例总行数：12；可用观测：10",
+          "剔除非法时间戳行：1",
+          "剔除缺失或非有限水位行：1",
+          "剔除重复时间戳行：0",
+          "样例为合成演示数据，非真实观测，不得作为实测或防汛依据。"
+        ]
+      }
+    ],
+    "disclaimer": "本结果为历史回放 / 本地快照数据上的教学科研辅助分析，不替代官方防汛决策。"
+  },
+  "evidence": [
+    {
+      "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+      "data_mode": "history_replay",
+      "observed_at": null,
+      "freshness": "fresh",
+      "model_version": null,
+      "tool_trace": [
+        "query_water_level_history:station=cata_12720:points=0"
+      ],
+      "notes": [
+        "样例总行数：12；可用观测：10",
+        "剔除非法时间戳行：1",
+        "剔除缺失或非有限水位行：1",
+        "剔除重复时间戳行：0",
+        "样例为合成演示数据，非真实观测，不得作为实测或防汛依据。"
+      ]
+    }
+  ],
+  "warnings": [
+    "DATA_UNAVAILABLE: 该时间范围内没有可用观测（断面 cata_12720，start=2000-01-01 00:00:00+08:00，end=2000-01-02 00:00:00+08:00）"
+  ]
+}

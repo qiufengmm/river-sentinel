@@ -1,0 +1,29 @@
+{
+  "name": "river-sentinel-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "River Sentinel 飞云江水位预测与防汛辅助决策智能体系统前端（历史回放演示，教学科研辅助）",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "vue-tsc --noEmit",
+    "test:run": "vitest run",
+    "test:watch": "vitest",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "echarts": "^5.5.1",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^25.0.1",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0",
+    "vue-tsc": "^2.2.0"
+  }
+}
