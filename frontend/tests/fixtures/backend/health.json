@@ -1,0 +1,39 @@
+{
+  "request_id": "c0061319-e258-437a-9d66-93242aa11447",
+  "status": "ok",
+  "data": {
+    "service": "river-sentinel-backend",
+    "version": "0.1.0-ds8a",
+    "data_mode": "history_replay",
+    "station_id": "cata_12720",
+    "sample_available": true,
+    "sample_path": "data\\samples\\water_level_sample.csv",
+    "artifact_dir": null,
+    "llm_provider": "local",
+    "external_provider_available": false,
+    "persistence_fallback_available": true,
+    "supported_horizons": [
+      1,
+      3,
+      6
+    ],
+    "research_threshold": 7.18,
+    "disclaimer": "本结果为历史回放 / 本地快照数据上的教学科研辅助分析，不替代官方防汛决策。"
+  },
+  "evidence": [
+    {
+      "source_url": "https://data.wenzhou.gov.cn/jdop_front/detail/data.do?iid=12720",
+      "data_mode": "history_replay",
+      "observed_at": null,
+      "freshness": "unknown",
+      "model_version": null,
+      "tool_trace": [
+        "health"
+      ],
+      "notes": [
+        "研究性阈值：7.18 m（非官方标准）"
+      ]
+    }
+  ],
+  "warnings": []
+}

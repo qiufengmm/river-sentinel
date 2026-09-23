@@ -1,0 +1,67 @@
+{
+  "forecast": {
+    "station_id": "cata_12720",
+    "horizons": [
+      1,
+      3,
+      6
+    ],
+    "model": "persistence",
+    "data_mode": "history_replay"
+  },
+  "forecast_degraded": {
+    "station_id": "cata_12720",
+    "horizons": [
+      1,
+      3,
+      6
+    ],
+    "model": "xgboost",
+    "data_mode": "history_replay"
+  },
+  "risk": {
+    "station_id": "cata_12720",
+    "water_level": 3.74,
+    "observed_at": "2026-01-01T11:00:00+08:00",
+    "horizons": [
+      1,
+      3,
+      6
+    ],
+    "predictions": {
+      "1": 3.71,
+      "3": 3.52,
+      "6": 3.2
+    },
+    "model": "persistence",
+    "model_version": "ds5b-hourly-baseline-1",
+    "data_mode": "history_replay"
+  },
+  "agent": {
+    "message": "当前是否达到研究性高水位？",
+    "station_id": "cata_12720",
+    "horizons": [
+      1,
+      3,
+      6
+    ],
+    "model": "persistence",
+    "data_mode": "history_replay"
+  },
+  "brief": {
+    "station_id": "cata_12720",
+    "horizons": [
+      1,
+      3,
+      6
+    ],
+    "model": "persistence",
+    "data_mode": "history_replay"
+  },
+  "history_query": {
+    "station_id": "cata_12720"
+  },
+  "comparison_query": {
+    "horizons": "1,3,6"
+  }
+}
