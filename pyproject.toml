@@ -25,6 +25,12 @@ dev = [
   "ruff>=0.6,<1",
 ]
 modeling = ["xgboost>=2,<4", "torch>=2.4,<3"]
+# DS-8A 后端与智能体可选依赖：安装命令 `pip install -e ".[backend,dev]"`。
+backend = [
+  "fastapi>=0.115,<1",
+  "langgraph>=0.2,<2",
+  "uvicorn>=0.30,<1",
+]
 
 [project.scripts]
 river-sentinel-data = "river_sentinel_ml.cli:main"
@@ -36,8 +42,10 @@ package-dir = {"" = "ml/src"}
 where = ["ml/src"]
 
 [tool.pytest.ini_options]
-testpaths = ["ml/tests"]
+testpaths = ["ml/tests", "backend/tests"]
 addopts = "-q"
+# 让 `backend` 与 `ml` 包可以从仓库根目录直接导入（`python -m pytest` 不额外设置 PYTHONPATH）。
+pythonpath = ["."]
 
 [tool.ruff]
 line-length = 100
